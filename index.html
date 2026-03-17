@@ -54,7 +54,7 @@
           <div class="column has-text-centered">
             <img src="static/images/icon.png" alt="" width="120" height="30"/>
             <h1 class="title is-1 publication-title"><font color="Goldenrod">Kinema4D</font>: 
-              <br><font color="Goldenrod">Kinema</font>tic-Controlled <font color="Goldenrod">4D</font> World Modeling for Spatial-Aware Robotic Simulation</h1>
+              <br><font color="Goldenrod">Kinema</font>tic<font color="Goldenrod">4D</font> World Modeling for Spatiotemporal Embodied Simulation</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
@@ -136,47 +136,46 @@
 </section>
 
 <!-- Teaser image-->
-<!-- <section class="hero teaser">
-  <!--<div class="container is-max-desktop">
-    <div class="hero-body">
-        <!-- Your image here -->
-        <!-- <img src="static/images/teaser.jpg" alt="MY ALT TEXT" width="800" height="600"/>
-      <h2 class="subtitle has-text-centered">
-        We introduce <b><i><font color="SlateBlue">Stable-Sim2Real</font></i></b> for simulating <i>real-captured</i> 3D data in a <i>data-driven</i> manner.
-      </h2>
-    </div>
-  </div> -->
-<!-- </section> -->
-<!-- End teaser image -->
-
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-        <iframe 
-          src="https://www.youtube.com/embed/kMOoh1_4Pnc?autoplay=1&mute=1&loop=1&playlist=kMOoh1_4Pnc" 
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-      <h2 class="subtitle has-text-centered" style="margin-top: 15px;">
-        We introduce <b><i><font color="#FFD700">Kinema4D</font></i></b>, the first <i>4D generative robotic simulator</i>.
+        <!-- Your image here -->
+        <img src="static/images/teaser.jpg" alt="MY ALT TEXT" style="display: block; margin: 0 auto; width: 90%; height: auto;"/>
+        
+      <h2 class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 1.5rem;">
+        We propose <b><i><font color="#FFD700">Kinema4D</font></i></b>, a new <i>action-conditioned 4D generative robotic simulator</i>. 
+        Given an <font color="DarkOrange">initial</font> world image with a robot at a canonical setup space, and an <font color="DeepSkyBlue">action sequence</font>, 
+        our method generates <font color="DarkOrange">future</font> robot-world <font color="DeepSkyBlue">interactions</font> in <font color="Green4">4D</font> space.
       </h2>
     </div>
   </div>
 </section>
+<!-- End teaser image -->
 
 <!-- Teaser video-->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container" style="max-width: 1000px !important; width: 95%;">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="https://www.youtube.com/embed/kMOoh1_4Pnc"
-        type="video/mp4">
-      <h2 class="subtitle has-text-centered">
-        We introduce <b><i><font color="Gold2">Kinema4D</font></i></b>, the first <i>4D generative robotic simulator</i>.
+      <div align="center">
+        <div style="
+          position: relative; 
+          padding-bottom: 56.25%; /* 16:9 比例 */
+          height: 0; 
+          overflow: hidden; 
+          width: 100%; 
+          border-radius: 12px; /* 增加圆角，提升高级感 */
+          box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* 增加投影，让视频更立体 */
+        ">
+          <iframe 
+            src="https://www.youtube.com/embed/9Z1fLIwuZdM?autoplay=1&mute=1&loop=1&playlist=9Z1fLIwuZdM" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <h2 class="subtitle has-text-centered" style="margin-top: 0.5rem">
+        Demo video of our work.
       </h2>
     </div>
   </div>
@@ -191,16 +190,15 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            While a few recent generative models show promise in simulating robot-environment interactions, they primarily operate in 2D pixel space, 
-            failing to capture the explicit 3D spatial constraints where the interaction is inherently defined. 
-            To this end, we propose Kinema4D, a framework that generates future robot-world interactions grounded in 4D space.
-            At the input level, given a single-view RGB image and an action sequence, we drive a 3D-reconstructed, 
-            URDF-based robot model via kinematics to produce a 4D robot trajectory, which is then projected into a pointmap sequence. 
-            Through this programmatic process, we not only <i><font color="DarkOrange">decouple robot motion from environment synthesis</font></i> but also <i><font color="DarkOrange">represent robotic actions as a deterministic spatial-aware visual control signal</font></i>. 
-            Accordingly, at the output level, the generative model purely synthesizes the environment's response to this control guidance while simultaneously predicting synchronized RGB and pointmap sequences, 
-            enabling the model to perceive and manipulate the world with full spatial awareness. 
-            To train our framework, we curated a large-scale dataset of real-world and synthetic demonstrations with high-quality 4D annotations. 
-            Extensive experiments show that Kinema4D ensures absolute kinematic correctness while generalizing to simulate diverse real-world dynamics.
+            Simulating robot-world interactions is a cornerstone of Embodied AI. 
+            Recently, a few works have shown promise in leveraging video generations to transcend the rigid visual/physical constraints of traditional simulators.
+            However, they primarily operate in 2D space or are guided by static environmental cues, ignoring the fundamental reality that robot-world interactions are <i>inherently 4D spatiotemporal events</i> that require <i>precise</i> interactive modeling.
+            To restore this 4D essence while ensuring the precise robot control, we introduce Kinema4D, a new action-conditioned 4D generative robotic simulator that disentangles the robot-world interaction into:
+            i) <font color="DarkOrange"><i>Precise</i> 4D representation of <i>robot controls</i></font> : we drive a URDF-based 3D robot via kinematics, producing a precise 4D robot control trajectory. 
+            ii) <font color="DarkOrange"><i>Generative</i> 4D modeling of <i>environmental reactions</i></font> : we project the 4D robot trajectory into a pointmap as a spatiotemporal visual signal, controlling the generative model to synthesize complex environments’ reactive dynamics into synchronized RGB/pointmap sequences.
+            To facilitate training, we curated a large-scale dataset called Robo4D-200k, comprising <font color="CadetBlue1">201,426</font> robot interaction episodes with high-quality 4D annotations. 
+            Extensive experiments demonstrate that our method effectively simulates physically-plausible, geometry-consistent, and embodiment-agnostic interactions that faithfully mirror diverse real-world dynamics. 
+            For the first time, it shows potential <i>zero-shot</i> transfer capability, providing a high-fidelity foundation for advancing next-generation embodied simulation.
           </p>
         </div>
       </div>
@@ -211,132 +209,882 @@
 
 <!-- Method image-->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container is-fluid">
     <div class="hero-body">
       <br>
-      <h2 class="title is-3">Method Overview</h2>
+      <h2 class="title is-3 has-text-centered">Method Overview</h2>
         <!-- Your image here -->
-        <img src="static/images/pipeline.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        <b>An overview of our framework</b>.
-        1) <font color="DarkViolet">Kinematics Control</font>: Given a 3D robot with its URDF, and an action sequence, 
-        we drive the 3D robot via kinematics to produce a 4D robot trajectory, 
-        which is then projected into a pointmap sequence. This process re-represents raw actions as a spatial visual signal.
-        2) <font color="DeepSkyBlue">4D Generative World Modeling</font></i>: 
-        This signal and the world image are sent to a shared VAE encoder and then fused with an occupancy-aligned robot mask and Gaussian noise, 
-        which are finally denoised by a Diffusion Transformer to generate a full future 4D (pointmap+RGB) world sequence.
+        <img src="static/images/pipeline.jpg" alt="MY ALT TEXT" style="display: block; margin: 0 auto; width: 60%; height: auto;"/>
+      <h2 class="subtitle has-text-justified" style="margin-top: 0.5rem">
+        1) <font color="DarkViolet">Kinematics Control</font>: Given a 3D robot with its URDF at initial canonical setup space, and an action sequence, 
+        we drive the 3D robot via kinematics to produce a 4D robot trajectory, which is then projected into a pointmap sequence. 
+        This process re-represents raw actions as a spatiotemporal visual signal.
+        2) <font color="DeepSkyBlue">4D Generative World Modeling</font>:
+        This signal and the initial main-view world image are sent to a shared VAE encoder, then fused with an occupancy-aligned robot mask and noise, 
+        which are denoised by a Diffusion Transformerto generate a full future 4D (pointmap+RGB) world sequence. 
       </h2>
     </div>
   </div>
 </section>
 <!-- End method image -->
 
+<!-- Dataset image-->
+<section class="hero teaser">
+  <div class="container is-fluid">
+    <div class="hero-body">
+      <br>
+      <h2 class="title is-3 has-text-centered">Dataset Overview</h2>
+        <!-- Your image here -->
+        <img src="static/images/dataset.jpg" alt="MY ALT TEXT" style="display: block; margin: 0 auto; width: 60%; height: auto;"/>
+      <h2 class="subtitle has-text-justified" style="margin-top: 0.5rem">
+        Our dataset provides a comprehensive data foundation by aggregating diverse real-world demonstrations, 
+        including DROID, Bridge, and RT-1. 
+        We further incorporate the LIBERO to synthesize a vast array of successful/failure cases. 
+        Each episode captures a <i>complete</i> robot-world interaction (<i>e.g.</i>, pick-and-place)—providing the continuous information necessary for robust reasoning. 
+        The 4D point clouds viewed from various camera frustums are shown here, demonstrating the spatial precision of our pseudo-annotations.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End dataset image -->
 
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Animated Qualitative Comparison</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <center>
-          <video poster="" id="video1" autoplay controls muted loop width="900" height="600">
-            <!-- Your video file here -->
-            <source src="static/videos/lasa_sim2real.mp4"
-            type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">
-            <b>Qualitative 3D simulation results</b> on LASA.
-          </h2>
-        </center>
+<section class="section">
+  <div class="container is-fluid">
+    <h2 class="title is-3 has-text-centered">4D Qualitative comparison with TesserAct [ICCV 2025]</h2>
+    <br>
+    <h2 class="subtitle has-text-centered"><b>1. Simulation of <font color="LightSeaGreen">successful</font> task completion.</b> 
+      Unlike TesserAct that hallucinate outcomes, our method precisely reflects Ground-Truth (GT) executions, 
+      producing <i><font color="Tomato">physically-plausible</font></i> outcomes:</h2>
+    <div class="results-grid tri-view"> 
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/01_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/01_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/01_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
         </div>
-        <div class="item item-video2">
-          <center>
-          <video poster="" id="video2" autoplay controls muted loop width="900" height="600">
-            <!-- Your video file here -->
-            <source src="static/videos/shapenet_sim2real.mp4"
-            type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">
-            <b>Qualitative 3D simulation results </b> on ShapeNet (out-of-domain).
-          </h2>
-        </center>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT manipulate same object => similar outcome; TesserAct generates non-existing object => wrong outcome.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/02_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/02_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/02_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
         </div>
-        <div class="item item-video3">
-          <center>
-          <video poster="" id="video3" autoplay controls muted loop width="900" height="600">
-            <!-- Your video file here -->
-            <source src="static/videos/lasa_reconstruction.mp4"
-            type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">
-            <b>Qualitative benchmark results</b> of using the simulated data from different methods for training 3D instance reconstruction model.
-          </h2>
-        </center>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT contact/manipulate => similar outcome; TesserAct no contact but manipulate => wrong outcome.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/03_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/03_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/03_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
         </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT grasp/manipulate same object => similar outcome; TesserAct grasps two objects => wrong outcome.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/04_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/04_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/04_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT manipulate same object => similar outcome; TesserAct generates non-existing object => wrong outcome.</p>
+      </div>
+    </div>
+
+    <br>
+    <h2 class="subtitle has-text-centered"><b>2. Simulation of <font color="Firebrick">failed</font> task completion (<font color="Red">More interesting/reasonable!!!</font>).</b> 
+    Our method precisely reflects <b>"near-miss"</b> failure cases.<br>
+    Specifically, our model <i>correctly interprets the <b><font color="#FFD700">spatial gap</font></b></i> between the gripper and the object, even when their <b><i><font color="#FFD700">RGB textures overlap in 2D views</font></i></b>.
+    </h2>
+    <div class="results-grid tri-view"> 
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/05_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/05_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/05_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT all failed to grasp the object; TesserAct still manipulates the object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/06_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/06_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/06_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT all failed to grasp the object; TesserAct still manipulates the object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/07_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/07_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/07_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT all failed to grasp the object; TesserAct still manipulates the object and generates the illusion.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/08_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/08_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_tess/08_tess.mp4" type="video/mp4"></video>
+            <span class="video-label">TesserAct</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT all failed to grasp the object; TesserAct still manipulates the object.</p>
       </div>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
 
+<!-- <section class="section">
+  <div class="container is-fluid">
+    <h2 class="title is-3 has-text-centered">2D Qualitative comparison with Ctrl-World [ICLR 2026]</h2>
+    <br>
+    <h2 class="subtitle has-text-centered">Ctrl-World only outputs 2D videos, so we compare 2D results here. 
+      Our method achieves superior fidelity; Ctrl-World exhibits distorted actions and unrealistic environmental transitions.
+    </h2>
+    <div class="results-grid tri-view"> 
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_ctrl/01_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_ctrl/01_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_ctrl/01_ctrl.mp4" type="video/mp4"></video>
+            <span class="video-label">Ctrl-World</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT get similar outcomes: door opened; Ctrl-World gets different outcomes: door not opened.</p>
+      </div>
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Qualitative Comparison</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-      <div class="item">
-        <center>
-        <!-- Your image here -->
-        <img src="static/images/lasa_sim_result.jpg" alt="MY ALT TEXT" width="1000" height="600"/>
-        <h2 class="subtitle has-text-centered">
-          <b>Qualitative 3D simulation results</b> on LASA.
-       </h2>
-      </center>
-     </div>
-     <div class="item">
-      <center>
-      <!-- Your image here -->
-      <img src="static/images/lasa_sim_result_depth.jpg" alt="MY ALT TEXT" width="700" height="900"/>
-      <h2 class="subtitle has-text-centered">
-        <b>Qualitative depth/3D simulation results </b> on LASA.
-      </h2>
-    </center>
-    </div>
-     <div class="item">
-      <center>
-      <!-- Your image here -->
-      <img src="static/images/syn_sim_result.jpg" alt="MY ALT TEXT" width="1000" height="900"/>
-      <h2 class="subtitle has-text-centered">
-        <b>Qualitative 3D simulation results </b> on ShapeNet (out-of-domain).
-      </h2>
-    </center>
-    </div>
-    <div class="item">
-      <center>
-      <!-- Your image here -->
-      <img src="static/images/syn_sim_result_depth.jpg" alt="MY ALT TEXT" width="700" height="900"/>
-      <h2 class="subtitle has-text-centered">
-        <b>Qualitative depth/3D simulation results </b> on ShapeNet (out-of-domain).
-      </h2>
-    </center>
-    </div>
-    <div class="item">
-      <center>
-      <!-- Your image here -->
-      <img src="static/images/lasa_recon_result_supple_v2.jpg" alt="MY ALT TEXT" width="800" height="1000"/>
-      <h2 class="subtitle has-text-centered">
-        <b>Qualitative benchmark results</b> of using the simulated data from different methods for training 3D instance reconstruction model.
-      </h2>
-    </center>
+      <div class="grid-item">
+        <div class="video-comparison three-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_ctrl/02_ours.mp4" type="video/mp4"></video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_ctrl/02_gt.mp4" type="video/mp4"></video>
+            <span class="video-label">GT</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline><source src="static/videos/comp_ctrl/02_ctrl.mp4" type="video/mp4"></video>
+            <span class="video-label">Ctrl-World</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-4">Ours and GT contact similar positions => similar outcome; Ctrl-World no contact but manipulate.</p>
+      </div>
     </div>
   </div>
-</div>
-</div>
+</section> -->
+
+<section class="section">
+  <div class="container is-fluid">
+    <h2 class="title is-3 has-text-centered">Qualitative results of Policy Evaluation.</h2>
+    <br>
+    <h2 class="subtitle has-text-centered"><h2 class="subtitle has-text-centered"><b>1. Evaluation in <font color="Firebrick">real-world</font> environment (<font color="Red">First-time <i>out-of-distribution</i> test !!!</font>).</b> 
+    <br>To intuitively compare with GT, we also reconstruct the GT and present both 4D and 2D results. 
+    <br>Our results align with real outcomes, accurately synthesizing <b>both successful rollouts and <i>"near-miss"</i> failure</b>.
+    </h2>
+    <div class="results-grid quad-view">
+      <div class="grid-item">
+        <div class="video-comparison four-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_1_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours (4D)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_1_ours_2d.mp4" type="video/mp4">
+            </video>
+            <span class="video-label is-ours">Our (2D)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_1_gt_2d.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT (2D)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_1_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT (4D)</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Successful task completion rollouts.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison four-way">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_6_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours (4D)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_6_ours_2d.mp4" type="video/mp4">
+            </video>
+            <span class="video-label is-ours">Our (2D)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_6_gt_2d.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT (2D)</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/real_6_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT (4D)</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2"> <b>"Near-miss"</b> failure cases.
+          Our model <i>correctly interprets the <b><font color="#FFD700">spatial gap</font></b></i> between the gripper and the object,
+          even when their <b><i><font color="#FFD700">RGB textures overlap in 2D views</font></i></b>.</p>
+      </div>
+    </div>
+
+    <br>
+    <h2 class="subtitle has-text-centered"><b>2. Evaluation in <font color="DarkSlateBlue">LIBERO simulation</font> environment.</b> 
+      Our method generates similar outcome as Ground-Truth for <b>both successful and failed task completion</b>. </h2>
+    <div class="results-grid">
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/1_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/1_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Successfully pick and place.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/2_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/2_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Successfully pick and place.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/3_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/3_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Successfully pick and place.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/4_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/4_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Failed task completion.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/5_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/5_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Failed task completion.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/6_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/policy/6_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Failed task completion.</p>
+      </div>
+
+    </div>
+  </div>
 </section>
-<!-- End image carousel -->
+
+<section class="section">
+  <div class="container is-fluid">
+    <h2 class="title is-3 has-text-centered">Extensive Results Showcase</h2>
+    <br>
+    <h2 class="subtitle has-text-centered"> Ours method simulates <i><font color="Tomato">physically plausible</font></i> and <i><font color="Tomato">geometrically consistent</font></i> interactions,
+      <br>between <i><font color="DeepSkyBlue">complex robot actions</font></i> and <i><font color="DeepSkyBlue">diverse objects</font></i>,
+      <br> across <i><font color="SlateBlue">various spatial constraints</font></i> and <i><font color="SlateBlue">different embodiments</font></i>.</h2>
+    <div class="results-grid">
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/01_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/01_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Drag a <b>deformable</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/02_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/02_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place under <b>complex spatial constriants</b>.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/03_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/03_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place of a <b>small</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/04_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/04_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place <b>on</b> another object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/05_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/05_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Drag a <b>large deformable</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/06_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/06_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Fold a <b>deformable</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/07_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/07_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and move into <b>closer view</b>.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/08_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/08_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2"><b>Subtle contact</b> and <b>open</b> a shelf.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/09_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/09_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2"><b>Subtle</b> pick and place a <b>tiny</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/16_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/16_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Open the door to a <b>new world</b>.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/17_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/17_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2"><b>Close</b> a microwave oven.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/18_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/18_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2"><b>Close</b> a microwave oven.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/19_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/19_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place a <b>small</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/20_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/20_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place a <b>small</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/10_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/10_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2"><b>All failed</b> grasp the object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/11_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/11_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place a <b>small</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/12_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/12_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place a <b>small</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/21_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/21_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place a <b>small</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/13_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/13_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2"><b>Open</b> a drawer.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/14_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/14_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place a <b>transparent</b> object.</p>
+      </div>
+
+      <div class="grid-item">
+        <div class="video-comparison">
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/15_ours.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">Ours</span>
+          </div>
+          <div class="divider"></div>
+          <div class="video-container">
+            <video controls autoplay muted loop playsinline preload="metadata">
+              <source src="static/videos/all_results/15_gt.mp4" type="video/mp4">
+            </video>
+            <span class="video-label">GT</span>
+          </div>
+        </div>
+        <p class="is-size-10 has-text-centered mt-2">Pick and place a <b>small</b> object.</p>
+      </div>
+  </div>
+</section>
 
 
 
@@ -383,12 +1131,14 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@inproceedings{xu2025sim2real,
-        title={Stable-Sim2Real: Exploring Simulation of Real-Captured 3D Data with Two-Stage Depth Diffusion}, 
-        author={Mutian Xu and Chongjie Ye and Haolin Liu and Yushuang Wu and Jiahao Chang and Xiaoguang Han},
-        year={2025},
-        booktitle = {International Conference on Computer Vision (ICCV)}
-  }</code></pre>
+      <pre><code>
+@article{wan2025wan,
+title={Kinema4D: Kinematic4D World Modeling for Spatiotemporal Embodied Simulation},
+author={Xu, Mutian and Zhang, Tianbao and Liu, Tianqi and Chen, Zhaoxi and Han, Xiaoguang and Liu, Ziwei},
+journal={arXiv preprint arXiv:xxxxxxxxx},
+year={2026}
+}
+</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->

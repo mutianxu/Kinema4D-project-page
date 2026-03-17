@@ -133,5 +133,155 @@ body {
   font-size: smaller;
 }
 
+.results-grid {
+  display: grid;
+  /* 既然内部变宽了，建议一行 2 个或保持 3 个取决于你的页面宽度 */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 25px; 
+  padding: 20px 0;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 视频并排容器 */
+.video-comparison {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5; /* 浅色背景衬托视频 */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
+}
+
+.video-container {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+}
+
+/* 视频内部标注（左上角或下方） */
+.video-label {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  pointer-events: none; /* 防止遮挡鼠标点击视频 */
+}
+
+/* 分割线 */
+.divider {
+  width: 2px;
+  background-color: #ddd;
+  align-self: stretch; /* 填充整个高度 */
+}
+
+/* 悬停效果：整体放大 */
+.video-comparison:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* 响应式：在手机上变为 1 列 */
+@media (max-width: 768px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 针对三视频对比的网格设置 */
+.results-grid.tri-view {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 强制一行两列 */
+  gap: 25px 25px; /* 纵向 40px, 横向 25px */
+}
+
+/* 响应式：在手机上变为 1 列 */
+@media (max-width: 768px) {
+  .results-grid.tri-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 三视频容器 */
+.video-comparison.three-way {
+  display: flex;
+  width: 100%;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+
+.video-comparison.three-way .video-container {
+  flex: 1; /* 三个视频等宽平分 */
+}
+
+/* 特别突出 Ours 的标签颜色 */
+.video-container:first-child .video-label {
+  background: rgba(0, 100, 200, 0.8); /* 蓝色背景 */
+}
+
+/* 只要带有 is-ours 类的标签都变蓝 */
+.video-label.is-ours {
+  background: rgba(0, 100, 200, 0.8) !important;
+}
 
 
+/* 针对四格对比，建议每行只显示一个大组 */
+.results-grid.quad-view {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 25px;
+  padding: 20px 2%;
+}
+
+/* 响应式：在手机上变为 1 列 */
+@media (max-width: 768px) {
+  .results-grid.quad-view {
+    grid-template-columns: 1fr;
+  }
+}
+
+.video-comparison.four-way {
+  display: flex;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.video-comparison.four-way .video-container {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 屏幕够宽时可以尝试一行两组，但视频会变小 */
+@media (min-width: 1600px) {
+  .results-grid.quad-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 标签微调：四格时空间极其宝贵 */
+.video-comparison.four-way .video-label {
+  font-size: 0.55rem;
+  padding: 1px 3px;
+  top: 3px;
+  left: 3px;
+}
